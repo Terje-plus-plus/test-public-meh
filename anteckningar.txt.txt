@@ -1,0 +1,8 @@
+Test
+Lite noteringar från konfigurationen av GIT och TFS
+
+Barret behöver sätta behörigheter både på TFS-servern och på den kopplade SQL-servern för att det ska fungera att skapa en ny Team Collection. Då jag skapade den första collection "testgit" så kom en varning om att språkinställningarna (collation) inte matchade mellan TFS och SQL, vilket kunde ge oväntat resultat vid  vissa SQL-kommandon. 
+
+TF400644: The collation settings of the SQL Server instance do not correspond to one of the supported full-text languages. Queries that specify the Contains or ContainsWords operators may not return expected results. For details, see http://go.microsoft.com/fwlink/?LinkId=246661.
+
+Mats och jag provar med att sätta en standardmässig collation på SQL för att se om det går att få bort varningen. Det går dock inte att ställa om collation för servern utan ominstallation, så vi bestämmer att inte åtgärda detta. Vi bedömer risken som liten, och Mats tänker att det nog är mest vid fulltextindexering som det skulle kunna ställa till problem. Jag får också säga att jag inte har någon möjlighet alls att bedöma TFS användning av Contains och ContainsWords i sina frågor mot SQL-databasen.
